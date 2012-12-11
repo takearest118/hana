@@ -1,0 +1,1 @@
+프린스턴 대학교 교수인 George A. Miller는 1956년에 ”The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information”라는 논문을 발표하였다. 밀러는 1차원 절대판단(absolute judgment) 실험에서 높이만 다른 10가지 음을 들려 주었을 때, 대부분의 사람들이 5-6개까지는 잘 대응하는데 그 이후로 급격히 떨어지는 것으로 보아 이 자극에 대한 저장 용량은 2-3비트로 이루어졌다고 유추할 수 있으며, 대략 4-8가지를 처리할 수 있다고 보았다.
