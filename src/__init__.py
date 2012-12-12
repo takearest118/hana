@@ -1,1 +1,1 @@
-__all__ = ['analyzer', 'dic','tokenizer']
+__all__ = ['analyzer', 'dictionary', 'tokenizer']

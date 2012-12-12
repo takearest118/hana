@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 
-class Dic(set):
+class Dictionary(set):
 	def __init__(self, filename):
 		try:
 			fp = open(filename, "rb")

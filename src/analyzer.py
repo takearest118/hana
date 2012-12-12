@@ -1,7 +1,7 @@
 # -*- coding: utf-8
 
 from tokenizer import Tokenizer as T
-from dic import Dic
+from dictionary import Dictionary
 
 from optparse import OptionParser
 import re
@@ -10,7 +10,7 @@ import os
 __usage__ = "%prog [-f]"
 __version__ = "%prog v0.5"
 __description__ = """
-This program is a Korean analyzer
+This program is a Hangeul analyzer
 """
 __epilog__ = """
 By Kevin Cho
@@ -38,12 +38,12 @@ def start_analyzer(raw):
 	print "[INFO] escape symbol -Done-"
 
 	print "[INFO] analyze bigram"
-	b_dic = Dic("./dic/basic.dic")
+	b_dic = Dictionary("./dic/basic.dic")
 	for t in tokens:
 		what = T.check_token(t)
 		if what == "korean":
 			if t in b_dic:
-				print "%s: Hit '%s'" % (t, b_dic.name)
+				print "%s: '%s' Hit!!!" % (t, b_dic.name)
 			else:
 				bigrams = bigram_analyzer(t)
 				print "%s: %s" % (t, "\t".join(bigrams))
