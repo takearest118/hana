@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import re
+import string
 
 class Tokenizer(object):
 
 	@staticmethod
 	def symbol_escaper(raw):
-		replace = re.sub(r"[\~\`\!\@\#\$\%\^\&\*\-\_\=\+\\|\:\;\.\,\?\/\<\>\(\)\{\}\[\]\"\'\n]", " ", raw)
+		regex = r"[%s%s]" % (string.punctuation, string.whitespace)
+		replace = re.sub(regex, " ", raw)
 		return re.sub(r"[\s]+", " ", replace).strip()
 
 	@staticmethod
@@ -15,19 +17,23 @@ class Tokenizer(object):
 
 	@staticmethod
 	def number_filter(raw):
-		return re.findall(r"([0-9]+)", raw)
+		regex = r"[%s]+" % string.digits
+		return re.findall(regex, raw)
 
 	@staticmethod
 	def number_comma_filter(raw):
-		return re.findall(r"([1-9][0-9,]+)", raw)
+		regex = r"([1-9][0-9,]+)"
+		return re.findall(regex, raw)
 
 	@staticmethod
 	def alphabet_filter(raw):
-		return re.findall(r"[a-zA-Z]+", raw)
+		regex = r"[%s]+" % string.letters
+		return re.findall(regex, raw)
 
 	@staticmethod
 	def korean_filter(raw):
-		return re.findall(r"[ㄱ-ㅎㅏ-ㅣ가-힣]+", raw)
+		regex = r"[ㄱ-ㅎㅏ-ㅣ가-힣]+" 
+		return re.findall(regex, raw)
 
 	@staticmethod
 	def check_token(raw):
