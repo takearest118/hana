@@ -11,5 +11,6 @@ class Dictionary(set):
 			self.name = fp.name
 		finally:
 			fp.close()
-		for el in raw.split("\n"):
-			self.add(el)
+		self.update(raw.split("\n"))
+		#for el in raw.split("\n"):
+		#	self.add(el)

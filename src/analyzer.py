@@ -27,6 +27,13 @@ def bigram_analyzer(raw):
 	UTF8_BYTE = 3	# count byte of utf-8 per one Korean character
 	return [raw[idx:idx+UTF8_BYTE*2] for idx in xrange(0, len(raw)-UTF8_BYTE, UTF8_BYTE)]
 
+def josa_analyzer(raw, dic):
+	UTF8_BYTE = 3	# count byte of utf-8 per one Korean character
+	for idx in xrange(0, len(raw)-UTF8_BYTE, UTF8_BYTE):
+		if raw[idx+UTF8_BYTE:] in dic:
+			return raw[:idx+UTF8_BYTE], raw[idx+UTF8_BYTE:]
+	return raw, None
+
 def start_analyzer(raw):
 	print "[INFO] Analyze Korean"
 	print "[INFO] raw data"
@@ -36,20 +43,14 @@ def start_analyzer(raw):
 	print "[INFO] escape symbol"
 	print os.linesep.join(tokens)
 	print "[INFO] escape symbol -Done-"
-
-	print "[INFO] analyze bigram"
-	b_dic = Dictionary("./dic/basic.dic")
+	j_dic = Dictionary("./dic/josa.dic")
 	for t in tokens:
 		what = T.check_token(t)
 		if what == "korean":
-			if t in b_dic:
-				print "%s: '%s' Hit!!!" % (t, b_dic.name)
-			else:
-				bigrams = bigram_analyzer(t)
-				print "%s: %s" % (t, "\t".join(bigrams))
+			stemm, josa = josa_analyzer(t, j_dic)
+			print "%s:\t%s %s" % (t, stemm, josa)
 		else:
 			print "%s: %s" % (t, what)
-	print "[INFO] analyze bigram -Done-"
 	print "[INFO] Analyze Korean -Done-"
 
 def input_file(option, opt_str, value, parser):
