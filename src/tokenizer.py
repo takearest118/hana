@@ -7,6 +7,7 @@ class Tokenizer(object):
 
 	@staticmethod
 	def symbol_escaper(raw):
+		#quotation_marks = u"‘’“”"
 		regex = r"[%s%s]" % (string.punctuation, string.whitespace)
 		replace = re.sub(regex, " ", raw)
 		return re.sub(r"[\s]+", " ", replace).strip()
