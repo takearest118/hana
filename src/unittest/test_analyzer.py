@@ -23,5 +23,8 @@ class TestAnalyzerFunctions(unittest.TestCase):
 		self.assertEqual(analyzer.josa_analyzer("만약에", dic), ("만약", "에"))
 
 if __name__=="__main__":
-	suite = unittest.TestLoader().loadTestsFromTestCase(TestAnalyzerFunctions)
-	unittest.TextTestRunner(verbosity=2).run(suite)
+	suite = unittest.TestSuite()
+	test = unittest.TestLoader().loadTestsFromTestCase(TestAnalyzerFunctions)
+	suite.addTest(test)
+	runner = unittest.TextTestRunner(verbosity=2)
+	runner.run(suite)

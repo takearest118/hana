@@ -1,1 +1,1 @@
-__all__ = ['analyzer', 'dictionary', 'tokenizer']
+__all__ = ['hana', 'analyzer', 'dictionary', 'tokenizer']
