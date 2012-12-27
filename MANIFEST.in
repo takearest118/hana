@@ -1,0 +1,3 @@
+include src/test/*.txt
+include src/dic/*.dic
+include src/unittest/*.py

@@ -9,7 +9,7 @@ def find_version(filename):
 			return m.group(1)
 	return None
 
-VERSION = find_version('src/analyzer.py')
+VERSION = find_version('src/hana.py')
 
 setup(
 	name='hana',
